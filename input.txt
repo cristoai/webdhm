@@ -1,0 +1,246 @@
+&jobname
+    runname = 'Kurobe'
+    para_dir = '../../output/parameter/'
+    data_dir = '../../output/data/'
+    dam_dir = 'dam_data_sim/'
+    result1_dir = 'output/river/'
+    result2_dir = 'output/other/'
+    simulation_dir = 'output/simulation/'
+    recv_dir = './recover/'
+/
+
+&timestep
+    initime = '2017-01-01:00:00:00'
+    tstart = 0.0
+    tstop = 9460800 !31536000 !72403200 !469411200
+    dt_couple = 3600.0
+    dtlsm = 3600.0
+    dthydro = 3600.0
+    recv_mode = 0
+/
+
+&position
+    latsw = 36.390462
+    latne = 36.903674
+    lonsw = 137.511298
+    lonne = 137.763021
+    xsw = 725103.969235035
+    xne = 746603.969235035
+    ysw = 4030328.70004502
+    yne = 4087578.70004502
+/
+
+&projection
+    mapproj = 3
+    mpfctopt = 0
+    trulat(1:2) = 0, 0
+    trulon = 141.0
+    ctrlat = 36.647068
+    ctrlon = 137.6371595
+    sclfct = 0.9996
+/
+
+&grid
+    dx = 250
+    dy = 250
+    dzroot = 0.2
+    dzdeep = 0.2
+/
+
+&mapfile
+    gridarea_map = 'cell_area.asc'
+    elevation_map = 'elevation.asc'
+    slopelength_map = 'slope_length.asc'
+    slopeangle_map = 'slope_angle.asc'
+    soildepth_map = 'soil_depth.asc'
+    acquiferdepth_map = 'acquiferdepth.asc'
+    zref_map = 'zwind.asc'
+    met_alt_map = 'sta_alt.asc'
+    land_map = 'land_use.asc'
+    soil_map = 'soil_unit.asc'
+    soil_code = 'soil_code.txt'
+    soil_table = 'soil_water_para.dat'
+    met_map = 'rain_thiessen.asc'
+/
+
+&topography
+    ele0 = 1000.0
+    slope0 = 0.05
+    length0 = 300.0
+    ds0 = 4.0
+    deldpth = 4.0
+    zwind0 = 10.0
+/
+
+&initsoil
+    sfcdat = 1
+    vegfromtype = 1
+    styp = 3
+    vtyp = 9
+    lai0 = 0.3
+    veg0 = 0.5
+    soilinit = 1
+    tslnd0 = 286.35
+    tscanp0 = 286.35
+    tswtr0 = 286.35
+    tsoil0 = 286.35
+    vlcsfc0 = 0.0
+    vlcrt0 = 0.0
+    vlcdp0 = 0.0
+    wetcanp0 = 0.0
+    wetg0 = 0.0
+    snowc0 = 0.0
+    snowg0 = 0.0
+    tsprt = 0.0
+    tcprt = 0.0
+    t2prt = 0.0
+    wgrat = 0.85
+    wrtrat = 0.85
+    w2rat = 0.85
+/
+
+&lsmmodel
+    rstopt = 0
+    snowmodel = 1
+    batsmodel = 1
+    thsnow = 0.0
+    visalbedo = 0.85
+    niralbedo = 0.65
+/
+
+&misc
+    sstmax_calib = 1.0
+    ksat1_calib = 3.0
+    ksat2_calib = 0.1
+    kgs_calib = 1.0
+    anik_calib = 0.7
+    alpha_calib = 1.2
+    watern_calib = 1.0
+    wsat_calib = 1.4
+    wrsd_calib = 1.0
+    ds_calib = 1.0
+    gwcs_calib = 1.0
+    rain_correct = 1
+    snow_correct1 = 1.426
+    snow_correct2 = 3.46
+    tair_lapse = 0
+    roughness_n_calib = 0.5
+    river_roughness_override = 0.03
+    gaugepoint_subcatchment = 'ws100'
+    gaugepoint_flowint = -1
+    fmt_ppt = "('SRF_GPV_ANAL/',i4.4,'/',i2.2,'/',i2.2,'/','PPT_',i4.4,i2.2,i2.2,i2.2,'0000.direct')"
+    fmt_tair = "('jra55_vpt/Tair_C_',i4.4,'_',i2.2,'.direct')"
+    fmt_lwdown = "('jra55/LWdown',i4.4,'_',i2.2,'.direct')"
+    fmt_swdown = "('jra55/SWdown',i4.4,'_',i2.2,'.direct')"
+    fmt_cloud = "('jra55/Cloud',i4.4,'_',i2.2,'.direct')"
+    fmt_uwind = "('jra55/Uwind',i4.4,'_',i2.2,'.direct')"
+    fmt_vwind = "('jra55/Vwind',i4.4,'_',i2.2,'.direct')"
+    fmt_wind = "('jra55/Wind',i4.4,'_',i2.2,'.direct')"
+    fmt_psfc = "('jra55/Psfc',i4.4,'_',i2.2,'.direct')"
+    fmt_qair = "('jra55/Psfc',i4.4,'_',i2.2,'.direct')"
+    fmt_rh = "('jra55/RH',i4.4,'_',i2.2,'.direct')"
+/
+
+&input
+    inicon_cfg = 0
+    fixed_inisub = 1
+    fixed_finsub = 17
+    upd_psfc = .true.
+    upd_tair = .false.
+    upd_rhqv = .true.
+    read_spec_hum = .false.
+    read_separate_u_v = .true.
+    read_separate_rain_snow = .false.
+    meteo_input_type = 3
+    jra_prefix = 'JRA2000-2005x_'
+    jra_lat = 36.225, 36.786, 37.3475
+    jra_lone = 139.5
+    jra_lonw = 138.375
+    jra_inityr = 2000
+    jra_initmo = 1
+    jra_initday = 1
+    jra_inithr = 0
+    jra_tzoffset = 9.0
+    rainfall_input_type = 4
+    const_laifpar = .false.
+    monthly_laifpar = .false.
+/
+
+&output
+    avg(1)%name = 'Kurobe_avg.hourly'
+    avg(1)%startsub = 'ws900'
+    avg(1)%endsub = 'ws700'
+    avg(1)%endflowint = 24
+    avg(2)%name = 'Sennindani_avg.hourly'
+    avg(2)%startsub = 'ws900'
+    avg(2)%endsub = 'ws700'
+    avg(2)%endflowint = 47
+    avg(3)%name = 'Koyadaira_avg.hourly'
+    avg(3)%startsub = 'ws900'
+    avg(3)%endsub = 'ws300'
+    avg(3)%endflowint = 7
+    avg(4)%name = 'Dashidaira_avg.hourly'
+    avg(4)%startsub = 'ws900'
+    avg(4)%endsub = 'ws300'
+    avg(4)%endflowint = 23
+    avg(5)%name = 'Unazuki_avg.hourly'
+    avg(5)%startsub = 'ws900'
+    avg(5)%endsub = 'ws100'
+    avg(5)%endflowint = 18
+    avg(6)%name = 'Aimoto_avg.hourly'
+    avg(6)%startsub = 'ws900'
+    avg(6)%endsub = 'ws100'
+    avg(6)%endflowint = -1
+    avg(7)%name = 'Kitamata_avg.hourly'
+    avg(7)%startsub = 'ws290'
+    avg(7)%endsub = 'ws210'
+    avg(7)%endflowint = 4
+    avg(8)%name = 'Futami_avg.hourly'
+    avg(8)%startsub = 'ws290'
+    avg(8)%endsub = 'ws210'
+    avg(8)%endflowint = 11
+    discharge(1)%name = 'Kurobe'
+    discharge(1)%subcatch = 'ws700'
+    discharge(1)%flowint = 24
+    discharge(2)%name = 'Sennindani'
+    discharge(2)%subcatch = 'ws700'
+    discharge(2)%flowint = 47
+    discharge(3)%name = 'Koyadaira'
+    discharge(3)%subcatch = 'ws300'
+    discharge(3)%flowint = 7
+    discharge(4)%name = 'Dashidaira'
+    discharge(4)%subcatch = 'ws300'
+    discharge(4)%flowint = 23
+    discharge(5)%name = 'Unazuki'
+    discharge(5)%subcatch = 'ws100'
+    discharge(5)%flowint = 18
+    discharge(6)%name = 'Aimoto'
+    discharge(6)%subcatch = 'ws100'
+    discharge(6)%flowint = -1
+    discharge(7)%name = 'Kitamata'
+    discharge(7)%subcatch = 'ws210'
+    discharge(7)%flowint = 4
+    discharge(8)%name = 'Futami'
+    discharge(8)%subcatch = 'ws210'
+    discharge(8)%flowint = 11
+    !sptl_timestep = 'snowdep, snowdens, precipitation'
+/
+
+&debugging
+    pointscale_x = -1
+    pointscale_y = -1
+/
+
+&snapshot
+    sst_snapshot = 1
+    lsm_snapshot = 1
+    river_snapshot = 1
+    snow_snapshot = 1
+    bats_snapshot = 1
+    dam_snapshot = 0
+    save_recv = .false.
+/
+
+&damops_ctl
+    use_damops = 1 !3
+/
